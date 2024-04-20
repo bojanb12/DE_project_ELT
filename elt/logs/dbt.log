@@ -1,0 +1,12 @@
+[0m00:55:36.956229 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x04C150D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x042F7628>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x042F7610>]}
+
+
+============================== 00:55:36.967255 | b05513f3-9471-438f-bc5a-ad18e9e74ebd ==============================
+[0m00:55:36.967255 [info ] [MainThread]: Running with dbt=1.7.0
+[0m00:55:36.967255 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'invocation_command': 'dbt init', 'use_colors': 'True', 'profiles_dir': 'C:\\Users\\Bojan\\.dbt', 'version_check': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'static_parser': 'True', 'target_path': 'None', 'warn_error': 'None', 'debug': 'False', 'log_path': 'logs', 'log_cache_events': 'False', 'log_format': 'default', 'quiet': 'False', 'no_print': 'None', 'use_experimental_parser': 'False', 'write_json': 'True', 'introspect': 'True', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m00:57:27.051786 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x050D4028>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x047B85C8>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x047B85B0>]}
+
+
+============================== 00:57:27.067411 | 01bd9537-e9af-4d5c-a487-b4d32ce036d4 ==============================
+[0m00:57:27.067411 [info ] [MainThread]: Running with dbt=1.7.0
+[0m00:57:27.067411 [debug] [MainThread]: running dbt with arguments {'invocation_command': 'dbt init', 'printer_width': '80', 'use_colors': 'True', 'partial_parse': 'True', 'version_check': 'True', 'profiles_dir': 'C:\\Users\\Bojan\\.dbt', 'cache_selected_only': 'False', 'fail_fast': 'False', 'log_cache_events': 'False', 'target_path': 'None', 'log_format': 'default', 'debug': 'False', 'log_path': 'logs', 'warn_error': 'None', 'static_parser': 'True', 'quiet': 'False', 'no_print': 'None', 'use_experimental_parser': 'False', 'write_json': 'True', 'introspect': 'True', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
