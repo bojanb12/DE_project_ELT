@@ -10,3 +10,31 @@
 ============================== 00:57:27.067411 | 01bd9537-e9af-4d5c-a487-b4d32ce036d4 ==============================
 [0m00:57:27.067411 [info ] [MainThread]: Running with dbt=1.7.0
 [0m00:57:27.067411 [debug] [MainThread]: running dbt with arguments {'invocation_command': 'dbt init', 'printer_width': '80', 'use_colors': 'True', 'partial_parse': 'True', 'version_check': 'True', 'profiles_dir': 'C:\\Users\\Bojan\\.dbt', 'cache_selected_only': 'False', 'fail_fast': 'False', 'log_cache_events': 'False', 'target_path': 'None', 'log_format': 'default', 'debug': 'False', 'log_path': 'logs', 'warn_error': 'None', 'static_parser': 'True', 'quiet': 'False', 'no_print': 'None', 'use_experimental_parser': 'False', 'write_json': 'True', 'introspect': 'True', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m16:50:20.858527 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x054E4028>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x04BC85B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x04BC8598>]}
+
+
+============================== 16:50:20.866066 | 7a49240c-a086-4bbc-a9f0-a99adf81f30a ==============================
+[0m16:50:20.866066 [info ] [MainThread]: Running with dbt=1.7.0
+[0m16:50:20.867068 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'invocation_command': 'dbt init', 'use_colors': 'True', 'profiles_dir': 'C:\\Users\\Bojan\\.dbt', 'version_check': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'log_cache_events': 'False', 'target_path': 'None', 'log_format': 'default', 'debug': 'False', 'log_path': 'logs', 'static_parser': 'True', 'warn_error': 'None', 'quiet': 'False', 'no_print': 'None', 'use_experimental_parser': 'False', 'write_json': 'True', 'introspect': 'True', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m16:54:13.364499 [debug] [MainThread]: Starter project path: d:\documents\de_project\elt\dbt-env\lib\site-packages\dbt\include\starter_project
+[0m16:54:13.390774 [info ] [MainThread]: 
+Your new dbt project "custom_postgres" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m16:54:13.393291 [info ] [MainThread]: Setting up your profile.
+[0m16:54:21.052410 [info ] [MainThread]: Profile custom_postgres written to C:\Users\Bojan\.dbt\profiles.yml using target's sample configuration. Once updated, you'll be able to start developing with dbt.
+[0m16:54:21.054421 [debug] [MainThread]: Command `dbt init` succeeded at 16:54:21.054421 after 240.20 seconds
+[0m16:54:21.055412 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x054E4028>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x01E92C58>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x04BC8C28>]}
+[0m16:54:21.056409 [debug] [MainThread]: Flushing usage events
