@@ -59,6 +59,90 @@ services:
       DBT_PROFILE: default
       DBT_TARGET: dev
 
+  postgres:  # airflow needs somewhere to store it's logs and metadata, so we create a new postgres service for that
+    image: postgres:latest
+    networks:
+      - elt_network
+    environment:
+      POSTGRES_USER=airflow
+      POSTGRES_PASSWORD=airflow
+      POSTGRES_DB=airflow
+
+#initialisation of airflow
+  init-airflow:
+    image: apache/airflow:latest
+    depends_on:
+      - postgres
+    networks:
+      - elt_network
+    environment:
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgres+psycopg2://airflow:airflow@postgres/airflow
+    command: >
+      bash -c "airflow db init && airflow users create --username airflow --password password --firstname John --lastname Doe --role Admin --email admin@example.com"
+
+# UI of airflow
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: root
+    depends_on:
+      - postgres
+    networks:
+      - elt_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags # so that we have our dags folder inside the docker container
+      - ./elt:/opt/airflow/elt
+      - ./custom_postgres:/opt/dbt
+      - ~/dbt:/root/.dbt
+      - /var/run/docker.sock:/var/run/docker.sock # giving Airflow access to docker network
+    environment:
+      - LOAD_EX=n
+      - EXECUTOR=Local
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgres+psycopg2://airflow:airflow@postgres/airflow
+      - AIRFLOW__WEBSERVER__DEFAULT__USER_USERNAME=airflow
+      - AIRFLOW__WEBSERVER__DEFAULT__USER_PASSWORD=password
+      - AIRFLOW_WWW_USER_USERNAME=airflow
+      - AIRFLOW_WWW_USER_PASSWORD=password
+      - AIRFLOW__WEBSERVER__SECRET_KEY=secret
+      #- AIRFLOW__CORE__FERNET_KEY= good practice would be to generate a fernet encrytion key here, for encypting user and password and security
+    ports:
+      -"8080:8080"
+    command: webserver
+  
+  scheduler:   # needed workor for Airflow jobs
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: root
+    depends_on:
+      - postgres
+    networks:
+      - elt_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags # so that we have our dags folder inside the docker container
+      - ./elt:/opt/airflow/elt
+      - ./custom_postgres:/opt/dbt
+      - ~/dbt:/root/.dbt
+      - /var/run/docker.sock:/var/run/docker.sock # giving Airflow access to docker network
+    environment:
+      - LOAD_EX=n
+      - EXECUTOR=Local
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgres+psycopg2://airflow:airflow@postgres/airflow
+      - AIRFLOW__WEBSERVER__DEFAULT__USER_USERNAME=airflow
+      - AIRFLOW__WEBSERVER__DEFAULT__USER_PASSWORD=password
+      - AIRFLOW_WWW_USER_USERNAME=airflow
+      - AIRFLOW_WWW_USER_PASSWORD=password
+      - AIRFLOW__WEBSERVER__SECRET_KEY=secret
+      #- AIRFLOW__CORE__FERNET_KEY= good practice would be to generate a fernet encrytion key here, for encypting user and password and security
+    ports:
+      -"8080:8080"
+    command: webserver
+      
 networks:
   elt_network:
     driver: bridge
