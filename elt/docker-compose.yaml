@@ -53,7 +53,8 @@ services:
       - ./custom_postgres:/dbt
       - ~/.dbt:/root
     depends_on:
-      - elt_script
+      elt_script: 
+          condition: service_completed_successfully # EXTREMELY IMPORTANT if the dbt runs before the elt script, there will be no destination db to map
     environment:
       DBT_PROFILE: default
       DBT_TARGET: dev
@@ -61,3 +62,6 @@ services:
 networks:
   elt_network:
     driver: bridge
+
+volumes:
+  destination_db_data:
