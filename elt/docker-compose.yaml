@@ -127,7 +127,7 @@ services:
       - "host.docker.internal:host-gateway"
     volumes:
       - ./airflow/dags:/opt/airflow/dags # so that we have our dags folder inside the docker container
-      - ./elt:/opt/airflow/elt
+      - ./elt_script:/opt/airflow/elt_script
       - ./custom_postgres:/opt/dbt
       - ~/dbt:/root/.dbt
       - /var/run/docker.sock:/var/run/docker.sock # giving Airflow access to docker network

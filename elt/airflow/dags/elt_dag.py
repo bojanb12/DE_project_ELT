@@ -18,8 +18,8 @@ default_args = {
 
 
 def run_elt_script():
-    script_path = "/opt/airflow/elt/elt_script.py"
-    result = subprocess.run("python", script_path, capture_output= True, text=True)
+    script_path = "/opt/airflow/elt_script/elt_script.py"
+    result = subprocess.run(["python", script_path], capture_output= True, text=True)
     
     if result.returncode != 0:
         raise Exception(f"Script failed with error: {result.stderr}")
@@ -49,13 +49,13 @@ t2 = DockerOperator(
         "--profiles-dir",
         "/root",
         "--project-dir",
-        "/dbt"
+        "/opt/dbt"
     ],
     auto_remove=True,
     docker_url="unix://var/run/docker.sock",
     network_mode="bridge",
     mounts=[
-        Mount(source='/Documents/DE_project/elt/custom_postgres', target='/dbt', type='bind'),
+        Mount(source='/Documents/DE_project/elt/custom_postgres', target='/opt/dbt', type='bind'),
         Mount(source='C:/Users/Bojan/.dbt', target='/root', type='bind')
     ],
     dag=dag
