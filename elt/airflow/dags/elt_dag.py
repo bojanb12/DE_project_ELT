@@ -25,7 +25,7 @@ def run_elt_script():
         
 
 dag = DAG(
-    'elt_and_dbt'
+    'elt_and_dbt',
     default_args=default_args,
     description='An ELT workflow with dbt',
     start_date=datetime(2024, 4, 26),
